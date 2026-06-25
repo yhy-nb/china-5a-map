@@ -1,21 +1,3 @@
-// ===== 密码锁 =====
-(function(){
-  if (sessionStorage.getItem('unlocked')) return;
-  document.getElementById('lock-btn').addEventListener('click',function(){
-    var pwd=document.getElementById('lock-input').value;
-    // 修改这里设置你的密码 (默认: 123456)
-    if(pwd==='123456'){
-      sessionStorage.setItem('unlocked','1');
-      document.getElementById('lock-screen').classList.add('hidden');
-    }else{
-      document.getElementById('lock-error').textContent='密码错误';
-    }
-  });
-  document.getElementById('lock-input').addEventListener('keydown',function(e){
-    if(e.key==='Enter') document.getElementById('lock-btn').click();
-  });
-})();
-
 var chart = null;
 var spotsData = [];
 var visitedMap = {};
