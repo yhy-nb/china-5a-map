@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>中国5A景区打卡地图 - 3D</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 顶部工具栏 -->
+  <div id="toolbar">
+    <div id="title">🇨🇳 中国5A景区打卡地图 · 3D</div>
+    <div id="controls">
+      <div id="stats">
+        <span class="stat-icon">🏆</span>
+        <span id="visited-count">0</span>
+        <span> / 337</span>
+        <div id="progress-bar"><div id="progress-fill"></div></div>
+        <span id="progress-text">0%</span>
+      </div>
+      <select id="province-filter">
+        <option value="all">🗺️ 全部省份</option>
+      </select>
+      <button id="visited-list-btn" title="查看已打卡列表">📋 已打卡</button>
+      <button id="reset-btn" title="清除所有打卡记录">🔄 重置</button>
+    </div>
+  </div>
+
+  <!-- 打卡详情弹窗 -->
+  <div id="spot-modal-overlay"></div>
+  <div id="spot-modal">
+    <div id="spot-modal-header">
+      <span id="spot-modal-title"></span>
+      <button id="spot-modal-close">✕</button>
+    </div>
+    <div id="spot-modal-body">
+      <div id="spot-modal-location"></div>
+      <div id="spot-modal-date"></div>
+
+      <!-- 未打卡：点亮按钮 -->
+      <div id="spot-modal-checkin">
+        <button id="spot-modal-checkin-btn">✨ 点亮打卡</button>
+      </div>
+
+      <!-- 已打卡：编辑区 -->
+      <div id="spot-modal-editor">
+        <div class="field-label">📝 评语</div>
+        <textarea id="spot-comment" placeholder="写下你的旅行感悟..." rows="3"></textarea>
+
+        <div class="field-label">📷 照片 <span style="font-size:11px;color:#888;">(最多3张)</span></div>
+        <div id="spot-images-preview"></div>
+        <button id="spot-upload-btn">＋ 上传图片</button>
+        <input type="file" id="spot-file-input" accept="image/*" multiple style="display:none">
+
+        <button id="spot-save-btn">💾 保存</button>
+        <span id="spot-save-msg"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox 大图 -->
+  <div id="lightbox">
+    <button id="lightbox-close">✕</button>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <!-- 地图容器 -->
+  <div id="map-container"></div>
+
+  <!-- 已打卡侧边栏 -->
+  <div id="visited-panel">
+    <div id="visited-panel-header">
+      <span>🏆 已打卡 (<span id="visited-list-count">0</span>)</span>
+      <button id="visited-panel-close" title="关闭">✕</button>
+    </div>
+    <div id="visited-panel-list"></div>
+  </div>
+
+  <!-- 底部提示 -->
+  <div id="legend">
+    <div class="legend-item">
+      <span class="legend-dot visited"></span><span>已打卡（金光柱）</span>
+    </div>
+    <div class="legend-item">
+      <span class="legend-dot unvisited"></span><span>未打卡（灰暗柱）</span>
+    </div>
+    <div id="legend-hint">🖱 滚轮缩放 · 拖拽平移 · 点击景点打卡</div>
+  </div>
+
+  <script src="lib/echarts.min.js"></script>
+
+    <script src="map3d.js"></script>
+</body>
+</html>
